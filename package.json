@@ -1,0 +1,23 @@
+{
+    "name": "test_app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Shinken44/test_app_nodejs.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Shinken44/test_app_nodejs/issues"
+    },
+    "homepage": "https://github.com/Shinken44/test_app_nodejs#readme",
+    "dependencies": {
+        "lodash": "^4.17.10"
+    }
+}

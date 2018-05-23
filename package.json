@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js"
+        "start": "node index.js",
+        "test": "mocha test"
     },
     "repository": {
         "type": "git",
@@ -19,5 +19,8 @@
     "homepage": "https://github.com/Shinken44/test_app_nodejs#readme",
     "dependencies": {
         "lodash": "^4.17.10"
+    },
+    "devDependencies": {
+        "mocha": "^5.2.0"
     }
 }

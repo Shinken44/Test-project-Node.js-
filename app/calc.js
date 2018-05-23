@@ -3,4 +3,5 @@ function sum(arr) {
         return a + b
     }, 0)
 }
+
 module.exports.sum = sum

@@ -1,16 +1,59 @@
-const http = require('http');
-const port = 50300;
+const path = require('path')
+const express = require('express')
+const exphbs = require('express-handlebars')
+const { Client } = require('pg')
+const app = express()
 
-const requestHandler = (request, response) => {
-    console.log(request.url);
-    response.end('Hello! This is my fisrt http-server');
-}
+app.engine('.hbs', exphbs({
+    defaultLayout: 'main',
+    extname: '.hbs',
+    layoutsDir: path.join(__dirname, 'views/layouts')
+}))
 
-const server = http.createServer(requestHandler)
+app.set('view engine', '.hbs')
+app.set('views', path.join(__dirname, 'views'))
 
-server.listen(port, (err) => {
-    if (err) {
-        return console.log('something bad happened', err);
-    }
-    console.log('server is listening on ${port}');
+app.get('/', (req, res) => {
+    res.render('home', {
+        name: 'Mike'
+    })
 })
+
+app.get('/users', function(req, res, next) {
+    const client = new Client({
+        user: 'postgres',
+        host: 'localhost',
+        database: 'test_db',
+        password: 'vermiliot',
+        port: 5432,
+    })
+
+    client.connect()
+    client.query('SELECT name, age FROM users;')
+        .then(result => { res.json(result.rows) })
+        .catch(e => { return next(e.stack) })
+        .then(() => client.end())
+        .catch(e => { return next(e.stack) })
+})
+
+app.post('/users', function(req, res, next) {
+
+    const user = req.body
+
+    const client = new Client({
+        user: 'postgres',
+        host: 'localhost',
+        database: 'test_db',
+        password: 'vermiliot',
+        port: 5432,
+    })
+
+    client.connect()
+    client.query('INSERT INTO users (name, age) VALUES ($1, $2);', [user.name, user.age])
+        .then(result => { res.send(200) })
+        .catch(e => { return next(e.stack) })
+        .then(() => client.end())
+        .catch(e => { return next(e.stack) })
+})
+
+app.listen(50300)

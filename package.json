@@ -18,7 +18,10 @@
     },
     "homepage": "https://github.com/Shinken44/test_app_nodejs#readme",
     "dependencies": {
-        "lodash": "^4.17.10"
+        "express": "^4.16.3",
+        "express-handlebars": "^3.0.0",
+        "lodash": "^4.17.10",
+        "pg": "^7.4.3"
     },
     "devDependencies": {
         "mocha": "^5.2.0"

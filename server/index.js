@@ -7,18 +7,16 @@ const requestManager = require('./requestManager')
 const app = express()
 
 app.engine('.hbs', exphbs({
-    defaultLayout: 'main',
+    defaultLayout: 'layout',
     extname: '.hbs',
-    layoutsDir: path.join(__dirname, '../views/layouts')
+    layoutsDir: path.join(__dirname, '../app')
 }))
 
 app.set('view engine', '.hbs')
-app.set('views', path.join(__dirname, '../views'))
+app.set('views', path.join(__dirname, '../app'))
 
 app.get('/', (req, res) => {
-    res.render('home', {
-        name: 'Mike'
-    })
+    res.send('Start Page')
 })
 
 app.get('/users', function(req, res, next) {
@@ -58,7 +56,7 @@ app.post('/users', function(req, res, next) {
         .catch(e => { return next(e.stack) })
 })
 
-app.get('/:city', async function(req, res) {
+app.get('/weather/:city', async function(req, res) {
     var data
     const err = await requestManager.getAccuWeather(req.params.city, data)
 

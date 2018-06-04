@@ -5,7 +5,9 @@
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
-        "test": "mocha test"
+        "test": "npm run test-helper && npm run test-app",
+        "test-helper": "mocha helper/*.spec.js",
+        "test-app": "mocha app/auth/*.spec.js"
     },
     "repository": {
         "type": "git",
@@ -27,6 +29,8 @@
         "request-promise": "^4.2.2"
     },
     "devDependencies": {
-        "mocha": "^5.2.0"
+        "chai": "^4.1.2",
+        "mocha": "^5.2.0",
+        "sinon": "^5.0.10"
     }
 }

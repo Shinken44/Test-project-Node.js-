@@ -20,10 +20,16 @@
     },
     "homepage": "https://github.com/Shinken44/test_app_nodejs#readme",
     "dependencies": {
+        "bcrypt": "^2.0.1",
+        "connect-redis": "^3.3.3",
+        "dotenv": "^6.0.0",
         "express": "^4.16.3",
         "express-handlebars": "^3.0.0",
+        "express-session": "^1.15.6",
         "lodash": "^4.17.10",
         "nodemon": "^1.17.5",
+        "passport": "^0.4.0",
+        "passport-local": "^1.0.0",
         "pg": "^7.4.3",
         "request": "^2.87.0",
         "request-promise": "^4.2.2"

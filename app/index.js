@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
+const helmet = require('helmet')
 
 const config = require('../config')
 const app = express()

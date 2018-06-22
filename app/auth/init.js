@@ -22,13 +22,14 @@ function initPassport() {
 
                 // User not found
                 if (!user) {
-                    console.log('User not found')
+                    console.log('user not found')
                     return done(null, false)
                 }
 
                 helper.verifyPassword(password, user.passwordHash)
                     .then((isValid) => {
                         if (!isValid) {
+                            console.log('verify password has been failed')
                             return done(null, false)
                         }
                         return done(null, user)

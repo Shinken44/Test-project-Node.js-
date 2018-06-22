@@ -11,6 +11,15 @@ const helmet = require('helmet')
 const config = require('../config')
 const app = express()
 
+app.use(helmet())
+
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com']
+    }
+}))
+
 app.use(bodyParser.urlencoded({
     extended: false
 }))
